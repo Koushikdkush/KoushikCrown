@@ -1,10 +1,16 @@
 import { useState, } from "react";
 import FormInput from "../formInput/formInput.component";
-import Button from "../buttons/button-component";
+import Button, { BUTTON_TYPE_CLASSES } from '../buttons/button-component';
 
-import { signInWithGooglePopup, CreateUserdocFromAuth, siginAuthUserEmailandPassword } from "../../utils/firebase/firebase.utils";
+
+import {
+    signInWithGooglePopup,
+    CreateUserdocFromAuth,
+    siginAuthUserEmailandPassword
+} from "../../utils/firebase/firebase.utils";
 
 import './signin.style.scss'
+import { type } from "@testing-library/user-event/dist/type";
 
 const defaultformfield = {
     email: '', password: '',
@@ -57,7 +63,7 @@ const SignIn = () => {
         const { name, value } = event.target;
         setformfiels({ ...formfield, [name]: value })
     }
-
+    //  console.log(typeof(BUTTON_TYPE_CLASSES.google))
     return (
 
         <div className="sign-in-container">
@@ -75,7 +81,10 @@ const SignIn = () => {
 
                 <div className="buttons-container">
                     <Button type="submit">SignIn</Button>
-                    <Button onClick={SignInWithGoogle} buttontype='google' type='button'>GOOGLE SIGNIN</Button>
+                    <Button onClick={SignInWithGoogle}
+                        buttontype={BUTTON_TYPE_CLASSES.google.toString()}
+                        type='button'>
+                        GOOGLE SIGNIN</Button>
                 </div>
             </form>
         </div>

@@ -48,7 +48,6 @@ const SignUp = () => {
     }
 
     return (
-
         <div className="sign-up-container">
             <h1>Don't have account ?</h1>
             <span>SignUp with Email and Password</span>
