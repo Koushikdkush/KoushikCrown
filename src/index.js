@@ -7,20 +7,20 @@ import { UserProvider } from './context/user.context';
 import reportWebVitals from './reportWebVitals';
 import { CategoriesProvider } from './context/CategoriesContext';
 import { CartProvider } from './context/cart.context';
-
+import { Provider } from 'react-redux';
+import { Store } from './store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={Store}>
     <BrowserRouter>
       <UserProvider>
         < CategoriesProvider>
-          <CartProvider>  <App /></CartProvider>
-
+          <CartProvider>  <App />
+          </CartProvider>
         </ CategoriesProvider>
       </UserProvider>
-
-    </BrowserRouter>
-
+    </BrowserRouter></Provider>
   </React.StrictMode>
 );
 
