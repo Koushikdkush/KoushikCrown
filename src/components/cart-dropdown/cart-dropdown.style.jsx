@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 import {
-  BaseButton,
-  GoogleSigInButton,
-  InvertedButton
+  GoogleSignInButton,BaseButton,InvertedButton
 } from
   '../buttons/button.style'
 
@@ -20,7 +18,7 @@ top: 90px;
 right: 40px;
 z-index: 5;
 
-${BaseButton},${GoogleSigInButton},${InvertedButton} {
+${BaseButton},${GoogleSignInButton},${InvertedButton} {
   margin-top: auto;
 }
 
