@@ -3,7 +3,7 @@ import {userReducer} from './user/user-reducer'
 import { CategoryReducer } from "./category/category.reducer";
 
 
-export const rootReducer=combineReducers({
+export const RootReducer=combineReducers({
     user:userReducer,
     categories:CategoryReducer,
 
