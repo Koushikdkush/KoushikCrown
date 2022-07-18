@@ -14,10 +14,7 @@ root.render(
   <React.StrictMode>
     <Provider store={Store}>
     <BrowserRouter>
-      
-          <CartProvider>  <App />
-          </CartProvider>
-    
+           <App />
     </BrowserRouter></Provider>
   </React.StrictMode>
 );
