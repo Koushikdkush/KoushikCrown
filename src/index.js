@@ -3,19 +3,21 @@ import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
-
 import reportWebVitals from './reportWebVitals';
-import { CategoriesProvider } from './context/CategoriesContext';
-import { CartProvider } from './context/cart.context';
 import { Provider } from 'react-redux';
-import { Store } from './store/store';
+import { Store,persistor } from './store/store';
+import { PersistGate } from 'redux-persist/es/integration/react'
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={Store}>
+    <Provider  store={Store}>
+      <PersistGate loading={null} persistor={persistor}>
     <BrowserRouter>
            <App />
-    </BrowserRouter></Provider>
+    </BrowserRouter>
+    </PersistGate></Provider>
   </React.StrictMode>
 );
 

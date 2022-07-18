@@ -6,13 +6,13 @@ import { createAuthUserWithEmailandPassword, CreateUserdocFromAuth } from '../..
 
 
 const defaultformfield = {
-    displayname: '', email: '', password: '', confirm_password: ''
+    displayName: '', email: '', password: '', confirm_password: ''
 }
 
 const SignUp = () => {
 
     const [formfield, setformfiels] = useState(defaultformfield)
-    const { displayname, email, password, confirm_password } = formfield
+    const { displayName, email, password, confirm_password } = formfield
     // console.log(formfield)
     const reset = () => {
         setformfiels(defaultformfield)
@@ -27,7 +27,7 @@ const SignUp = () => {
         try {
             const { user } = await createAuthUserWithEmailandPassword(email, password,);
            
-            await CreateUserdocFromAuth(user, { displayname })
+            await CreateUserdocFromAuth(user, { displayName })
             alert('SignUp Successfull...')
             reset()
         }
@@ -55,7 +55,7 @@ const SignUp = () => {
 
                 <FormInput label='Name'
                     type='text' required onChange={handleChange}
-                    name='displayname' value={displayname}
+                    name='displayName' value={displayName}
                 />
 
                 <FormInput type='email' label='Email' required onChange={handleChange} name='email' value={email} />

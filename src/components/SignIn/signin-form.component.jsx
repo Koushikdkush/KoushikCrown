@@ -34,8 +34,9 @@ const SignIn = () => {
 
 
         try {
-            const { user } = await siginAuthUserEmailandPassword(email, password)
-            alert('Signin SuccessFulll')
+          const {user} = await siginAuthUserEmailandPassword(email, password)
+            alert('Login SuccessFull')
+            console.log(user)
             reset()
         }
         catch (error) {

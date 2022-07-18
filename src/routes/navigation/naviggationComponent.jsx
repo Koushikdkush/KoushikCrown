@@ -12,8 +12,8 @@ import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component
 import {selectIsCartOpen} from '../../store/cart/cart.selector'
 
 const NavigationBar = () => {
-    const currentUser = useSelector(selectCurrentUser)
-    const  isCartOpen  = useSelector(selectIsCartOpen)
+    const currentUser=useSelector(selectCurrentUser)
+    const  isCartOpen=useSelector(selectIsCartOpen)
     return (
         <Fragment>
             <NavigationContainer>
