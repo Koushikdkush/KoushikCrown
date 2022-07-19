@@ -15,8 +15,6 @@ const Shop = () => {
         }
     
     }, [])
-
-
     return (
         <Routes>
             <Route index element={<CategoriesPreview></CategoriesPreview>}></Route>

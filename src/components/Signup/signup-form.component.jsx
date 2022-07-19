@@ -3,16 +3,20 @@ import FormInput from "../formInput/formInput.component";
 import './signup.style.scss'
 import Button,{BUTTON_TYPE_CLASSES} from "../buttons/button-component";
 import { createAuthUserWithEmailandPassword, CreateUserdocFromAuth } from '../../utils/firebase/firebase.utils'
+import { useDispatch } from "react-redux";
+import { SignUpStart } from "../../store/user/user.action";
+
+
 
 
 const defaultformfield = {
-    displayName: '', email: '', password: '', confirm_password: ''
+    displayname: '', email: '', password: '', confirm_password: ''
 }
 
 const SignUp = () => {
-
+    const dispatch=useDispatch()
     const [formfield, setformfiels] = useState(defaultformfield)
-    const { displayName, email, password, confirm_password } = formfield
+    const { displayname, email, password, confirm_password } = formfield
     // console.log(formfield)
     const reset = () => {
         setformfiels(defaultformfield)
@@ -25,10 +29,7 @@ const SignUp = () => {
             return
         }
         try {
-            const { user } = await createAuthUserWithEmailandPassword(email, password,);
-           
-            await CreateUserdocFromAuth(user, { displayName })
-            alert('SignUp Successfull...')
+            dispatch(SignUpStart(email,password,displayname))
             reset()
         }
         catch (error) {
@@ -55,7 +56,7 @@ const SignUp = () => {
 
                 <FormInput label='Name'
                     type='text' required onChange={handleChange}
-                    name='displayName' value={displayName}
+                    name='displayname' value={displayname}
                 />
 
                 <FormInput type='email' label='Email' required onChange={handleChange} name='email' value={email} />

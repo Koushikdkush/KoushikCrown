@@ -59,15 +59,10 @@ export const getCategoriesAndDocuments = async () => {
 
     const Snapshot = await getDocs(q)
     return Snapshot.docs.map((docsnapShot) => docsnapShot.data())
-   
+
 
 }
 
-
-
-
-
-// User creation
 
 export const CreateUserdocFromAuth = async (userAuth, additionalInfo = {}) => {
 
@@ -77,11 +72,11 @@ export const CreateUserdocFromAuth = async (userAuth, additionalInfo = {}) => {
 
 
     if (!userSnapshot.exists()) {
-        const { displayName, email } = userAuth
+        const { displayname, email } = userAuth
         const createdAt = new Date();
         try {
             await setDoc(userDocref, {
-                displayName, email, createdAt, ...additionalInfo
+                displayname, email, createdAt, ...additionalInfo
             })
         }
         catch (error) {
@@ -89,7 +84,7 @@ export const CreateUserdocFromAuth = async (userAuth, additionalInfo = {}) => {
         }
 
     }
-    return userDocref;
+    return userSnapshot;
 
 }
 
@@ -102,6 +97,20 @@ export const siginAuthUserEmailandPassword = async (email, password) => {
     if (!email || !password) return;
     return await signInWithEmailAndPassword(auth, email, password)
 }
-export const signoutUser = () => signOut(auth)
+
+
+export const signoutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListner = (callback) => onAuthStateChanged(auth, callback)
+
+export const getCurrentUser = () => {
+    return new Promise((reslove, reject) => {
+        const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+            unsubscribe()
+            reslove(userAuth)
+        },
+            reject
+        )
+
+    })
+}
