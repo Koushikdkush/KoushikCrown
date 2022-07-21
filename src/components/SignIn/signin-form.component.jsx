@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FormInput from "../formInput/formInput.component";
 import { SignInContainer, ButtonsContainer } from './signin.style';
 import Button,{ BUTTON_TYPE_CLASSES } from '../buttons/button-component';
+import { selectCurrentUser } from '../../store/user/user.selector'
 
 
 import { googleSignInStart,emailSignInStart } from '../../store/user/user.action';
@@ -15,6 +16,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  //const currentUser=useSelector(selectCurrentUser)
   const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
