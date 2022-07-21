@@ -1,4 +1,4 @@
-import { PaymentFormContainer, FormContainer } from './payment-form.style'
+/*import { PaymentFormContainer, FormContainer } from './payment-form.style'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import Button, { BUTTON_TYPE_CLASSES } from '../buttons/button-component';
@@ -25,3 +25,4 @@ const Payment = () => {
     )
 }
 export default Payment;
+*/

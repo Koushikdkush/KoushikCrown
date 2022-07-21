@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom';
 import {  useEffect, useState, Fragment } from 'react';
 import Spinner from '../../components/spinner/spinner.component';
 import ProductCard from '../../components/ProductCard/Productcard.componenet';
-import { selectCategoriesMap,selectCategoriesLoading } from '../../store/category/category.selector';
+import { selectCategoriesMap,selectIsLoading } from '../../store/category/category.selector';
 import { useSelector } from 'react-redux';
 
 const Category = () => {
     const { category } = useParams()
 
   const categoriesMap=useSelector(selectCategoriesMap);
-  const isLoading=useSelector(selectCategoriesLoading)
+  const isLoading=useSelector(selectIsLoading)
   const [products, setproducts] = useState(categoriesMap[category])
     useEffect(() => {
         console.log('use effect fired...')
@@ -34,3 +34,18 @@ const Category = () => {
 
 }
 export default Category;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
