@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useNavigate } from "react-router-dom";
 import FormInput from "../formInput/formInput.component";
 import { SignInContainer, ButtonsContainer } from './signin.style';
 import Button,{ BUTTON_TYPE_CLASSES } from '../buttons/button-component';
@@ -17,6 +17,10 @@ const defaultFormFields = {
 
 const SignInForm = () => {
   //const currentUser=useSelector(selectCurrentUser)
+
+  const navigate = useNavigate(); 
+  
+  
   const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
@@ -36,6 +40,7 @@ const SignInForm = () => {
       dispatch(emailSignInStart(email, password));
       alert('SignIn Success')
       resetFormFields();
+      navigate('/home');
     } catch (error) {
       console.log('user sign in failed', error);
     }
@@ -70,7 +75,8 @@ const SignInForm = () => {
           value={password} 
         />
         <ButtonsContainer>
-          <Button type='submit'>Sign In</Button>
+          <Button type='submit'>Sign In
+          </Button>
           <Button
             buttonType={BUTTON_TYPE_CLASSES.google}
             type='button'
